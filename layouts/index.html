@@ -9,6 +9,7 @@
       <div class="row">
         <div class="three columns">
           <a class="title" href="/">len.to</a>
+          <div id="search"></div>
         </div>
       </div>
 
@@ -19,15 +20,15 @@
         </div>
         <div class="nine columns right-side">
           <div class="gallery">
-            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" "img") }}
+            {{ $paginator := .Paginate (where .Data.Pages "Type" "in" "img") }}
             {{ range $paginator.Pages }}
-              {{ partial "img.html" . }}
+              <a href="{{ .Permalink }}"><img src={{ .Params.img_url }}></a>
             {{ end }}
           </div>
           {{ template "_internal/pagination.html" . }}
         </div>
       </div>
-    </div>
-    {{ partial "scripts.html" . }}
+    {{ partial "footer.html" . }}
+    {{ partial "search.html" $.Site.Taxonomies.tags }}
   </body>
 </html>

@@ -1,11 +1,11 @@
-![ci](https://github.com/bndw/len.to/workflows/ci/badge.svg)
+[![CircleCI](https://circleci.com/gh/bndw/len.to.svg?style=svg)](https://circleci.com/gh/bndw/len.to)
 
 # len.to
 
 My personal photo blog.
 
 <br>
-<img src="https://user-images.githubusercontent.com/4248167/127943051-a5803622-3af5-4125-a726-1d6c92b48103.png">
+<img src="https://user-images.githubusercontent.com/4248167/102584656-baae9e00-40bb-11eb-842b-b8852bba12cb.png">
 <br>
 
 ### Quickstart

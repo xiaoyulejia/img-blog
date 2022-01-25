@@ -6,9 +6,12 @@
   <body>
 
     <div class="container about">
+
       <div class="row">
-        <div class="three columns">
-          <a class="title" href="/">len.to</a>
+        <div class="three columns title">
+          <span>
+            <a id="home" href="/">len.to</a>
+          </span>
         </div>
       </div>
 
@@ -18,48 +21,28 @@
           {{ partial "tag-list.html"}}
         </div>
         <div class="nine columns right-side">
-          {{ $images := (where .Site.RegularPages "Type" "img").ByDate.Reverse }}
-          {{ $mostRecent := ""}} {{range first 1 $images}} {{ $mostRecent = .Permalink }} {{end}}
-          {{ $tagged := 0 }}
-          {{ range $images }}{{ $tagged = add $tagged (len .Params.Tags) }}{{ end }}
-
           <ul class="outbound">
-            <li>len.to is a collection of photography by <a href="https://bdw.to">Ben Woodward</a>.</li>
-            <li>
-              There are currently {{ len $images }} <a href="/archive">images</a>
-              indexed under {{ $tagged }} <a href="/tags">tags</a>.
+            <li><span>{{ len (where .Site.RegularPages "Type" "in" "img") }}</span> photos</li>
+            <li><span>
+              {{ $currentTagCount := 0 }}
+              {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+                {{ $currentTagCount = (add $currentTagCount (len $taxonomy.Pages)) }}
+              {{ end }}
+              {{ $currentTagCount }}
+              </span> tags
             </li>
-            <li>The <a href="{{ $mostRecent }}">most recent</a> image was added on {{ .Site.LastChange.Format "Monday, January 2, 2006" }}.</li>
+            <li>Last update {{ .Site.LastChange.Format "January 2, 2006" }}</li>
+            <li>Hugo version {{ hugo.Version }}</li>
           </ul>
-
-          <p>Hot keys (JavaScript required)</p>
-          <ul>
-            <li><span class="code">s</span> search images by tag</li>
-            <li><span class="code">esc</span> cancel search</li>
-            <li><span class="code">r</span> random image</li>
-            <li><span class="code">→</span> next page</li>
-            <li><span class="code">←</span> previous page</li>
-          </ul>
-
           <ul class="outbound">
-            <li>
-              The <a href="https://github.com/bndw/len.to">code for this site</a> is open source and licensed under <a href="https://choosealicense.com/licenses/agpl-3.0/">GNU AGPLv3</a>.
-            </li>
-            <li>
-              The content on this site is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons BY-NC-ND</a>.
-            </li>
-            <li>
-              <a href="https://thiswebsitedoesnottrackyou.com">This website does not track you</a>
-            </li>
-            <li>
-              <a href="/index.xml">RSS Feed</a>
-            </li>
+            <li>The <a href="https://github.com/bndw/len.to">code for this site</a> is licensed under <a href="https://choosealicense.com/licenses/agpl-3.0/">GNU AGPLv3</a>.</li>
+            <li>The content for this site is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons BY-NC-ND</a>.</li>
           </ul>
+          <p class="outbound">Created by <a href="https://bdw.to">Ben Woodward</a></p>
         </div>
       </div>
 
     </div>
 
-    {{ partial "scripts.html" . }}
   </body>
 </html>
