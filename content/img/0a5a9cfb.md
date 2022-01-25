@@ -1,12 +1,10 @@
 ---
 title: 0a5a9cfb
-date: 2019-12-01
-location: Mt. Baker, WA
-img_url: https://d17enza3bfujl8.cloudfront.net/0a5a9cfb.jpg
+date: 2022-01-25
+name: 黒羽イヴ
+img_url: https://pic.rmb.bdstatic.com/bjh/9f3482f529533a74192bb02eabe4461a.jpeg
 original_fn: IMG_1926_01.jpg
 tags:
-- Mt. Baker, WA
-- landscapes
-- snow
+- 黒羽イヴ
 
 ---
