@@ -1,33 +1,34 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
+
+<head>
     {{ partial "header.html" . }}
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
 
-      <div class="row">
-        <div class="three columns">
-          <a class="title" href="/">len.to</a>
-          <div id="search"></div>
+        <div class="row">
+            <div class="three columns">
+                <a class="title" href="/">len.to</a>
+                <div id="search"></div>
+            </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="three columns left-side">
-          {{ partial "nav.html" }}
-          {{ partial "tag-list.html" }}
+        <div class="row">
+            <div class="three columns left-side">
+                {{ partial "nav.html" }} {{ partial "tag-list.html" }}
+            </div>
+            <div class="nine columns right-side">
+                <div class="gallery">
+                    {{ range .Paginator.Pages }}
+                    <a href="{{ .Permalink }}"><img src={{ .Params.img_url }}></a>
+                    {{ end }}
+                </div>
+                {{ template "_internal/pagination.html" . }}
+            </div>
         </div>
-        <div class="nine columns right-side">
-          <div class="gallery">
-            {{ range  .Paginator.Pages }}
-              <a href="{{ .Permalink }}"><img src={{ .Params.img_url }}></a>
-            {{ end }}
-          </div>
-          {{ template "_internal/pagination.html" . }}
-        </div>
-      </div>
-    {{ partial "footer.html" . }}
-    {{ partial "search.html" $.Site.Taxonomies.tags }}
-  </body>
+        {{ partial "footer.html" . }} {{ partial "search.html" $.Site.Taxonomies.tags }}
+</body>
+
 </html>
