@@ -1,39 +1,36 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
+
+<head>
     {{ partial "header.html" . }}
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
 
-      <div class="row">
-        <div class="three columns">
-          <a class="title" href="/">len.to</a>
-          <div id="search"></div>
+        <div class="row">
+            <div class="three columns">
+                <a class="title" href="/">小娱乐家</a>
+                <div id="search"></div>
+            </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="three columns left-side">
-          {{ partial "nav.html"}}
-          {{ partial "tag-list.html"}}
-        </div>
-        <div class="nine columns right-side">
-          <img src={{ .Params.img_url }}>
-          <div class="row post-tags">
-            <a href="{{ .Permalink }}">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</a>
-          </div>
-          <div class="row post-tags">
-              {{ if .Params.Tags }}
-                {{ range $key, $tag := .Params.Tags }}
-                  {{- if ne $key 0 }}, {{ end }}<a href='/tags/{{ $tag | urlize }}'>#{{ $tag | lower }}</a>
-                {{ end }}
-              {{ end }}
-          </div>
+        <div class="row">
+            <div class="three columns left-side">
+                {{ partial "nav.html"}} {{ partial "tag-list.html"}}
+            </div>
+            <div class="nine columns right-side">
+                <img src={{ .Params.img_url }}>
+                <div class="row post-tags">
+                    <a href="{{ .Permalink }}">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</a>
+                </div>
+                <div class="row post-tags">
+                    {{ if .Params.Tags }} {{ range $key, $tag := .Params.Tags }} {{- if ne $key 0 }}, {{ end }}<a href='/tags/{{ $tag | urlize }}'>#{{ $tag | lower }}</a> {{ end }} {{ end }}
+                </div>
 
+            </div>
         </div>
-      </div>
-    {{ partial "footer.html" . }}
-    {{ partial "search.html" $.Site.Taxonomies.tags }}
-  </body>
+        {{ partial "footer.html" . }} {{ partial "search.html" $.Site.Taxonomies.tags }}
+</body>
+
 </html>
