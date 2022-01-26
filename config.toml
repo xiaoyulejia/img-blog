@@ -1,5 +1,5 @@
 title = "小娱乐家的相册"
-baseURL = "https://img-xylj.netlify.app"
+baseURL = "https://img.xylj.tk"
 languageCode = "en-us"
 paginate = 30
 paginatePath = ""
